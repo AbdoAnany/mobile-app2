@@ -9,10 +9,7 @@ import 'package:mobile_app_hack/sign_up/place_details.dart';
 class WorkLocation {
   static Widget ItemWorkLocation(PredictionsDate predictionsDate, context) {
     var w = MediaQuery.of(context).size.height;
-    int t1 = predictionsDate.main_text.length;
-    int t2 = predictionsDate.secondary_text.length;
-    if (predictionsDate.main_text.length > w / 25) t1 = (w / 25).toInt();
-    if (predictionsDate.secondary_text.length > w / 22) t2 = (w / 22).toInt();
+
     return InkWell(
         onTap: () {
           Navigator.push(
@@ -32,20 +29,22 @@ class WorkLocation {
                   SizedBox(
                     width: 10,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        predictionsDate.main_text.substring(0, t1),
-                        style:
-                            TextStyle(fontSize: 20, color: AppTheme.textcolor),
-                      ),
-                      Text(
-                        predictionsDate.secondary_text.substring(0, t2) + '...',
-                        style: TextStyle(fontSize: 15, color: Colors.grey),
-                      ),
-                    ],
-                  )
+             Expanded(child:      Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children: [
+                 Text(
+                   predictionsDate.main_text,
+                   textAlign: TextAlign.justify,  overflow: TextOverflow.ellipsis,
+                   style:
+                   TextStyle(fontSize: 20, color: AppTheme.textcolor),
+                 ),
+                 Text(
+                   predictionsDate.secondary_text,
+                   textAlign: TextAlign.justify,  overflow: TextOverflow.ellipsis,
+                   style: TextStyle(fontSize: 15, color: Colors.grey),
+                 ),
+               ],
+             ))
                 ],
               ),
             ),

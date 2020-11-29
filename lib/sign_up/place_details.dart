@@ -82,22 +82,16 @@ class _PlaceDetailsState extends State<PlaceDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.height;
 
-    int t2 = address.length;
-    if (address.length > w / 25) t2 = (w / 25).toInt();
-    return Scaffold(
+    return SafeArea(child:  Scaffold(
       backgroundColor: AppTheme.white,
       body: Container(
         margin: EdgeInsets.all(20),
         alignment: Alignment.center,
-        child: ListView(
-
+        child: Column(
           children: [
             Container(
-              height: 400,
-              width: MediaQuery.of(context).size.width * .8,
-              decoration: BoxDecoration(
+              width: MediaQuery.of(context).size.width * .8,              decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey, width: 2),
                 color: AppTheme.white,
                 borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -111,7 +105,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                     child: Text(
                       predictionsDate.main_text,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
@@ -151,31 +145,33 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                         Image(
                           image: AssetImage('assets/icn_details.png'),
                         ),
-                        Column(
+                        Expanded(child:     Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "  Company Addess",
                               style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
+                              TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             SizedBox(
                               height: 10,
                             ),
                             Text(
-                              "  " + address.substring(0, t2) + "...",
+                              address,
                               softWrap: true,
+                              textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
+
                               maxLines: 5,
-                              textAlign: TextAlign.start,
+
                               style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black45,
                                   inherit: true),
                             ),
                           ],
-                        )
+                        ))
                       ],
                     ),
                   ),
@@ -191,25 +187,34 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                         SizedBox(
                           width: 5,
                         ),
-                        Column(
+                        Expanded(child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Company Reception",
+                              "Company Reception",textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
                               style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
+                              TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Text(
+                            phone==null?  Text(
+                              "$name",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.black45),
+                            ):Text(
                               "$name\n$phone",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 15, color: Colors.black45),
                             ),
                           ],
-                        )
+                        ))
                       ],
                     ),
                   ),
@@ -220,6 +225,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
               height: 20,
             ),
             Container(
+              height: 50,
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * .8,
               decoration: BoxDecoration(
@@ -247,6 +253,7 @@ class _PlaceDetailsState extends State<PlaceDetails> {
               height: 20,
             ),
             Container(
+              height: 50,
               width: MediaQuery.of(context).size.width * .8,
               decoration: BoxDecoration(
                 border: Border.all(color: AppTheme.textcolor, width: 3),
@@ -268,9 +275,12 @@ class _PlaceDetailsState extends State<PlaceDetails> {
                         fontWeight: FontWeight.normal),
                   )),
             ),
+
           ],
+
+
         ),
       ),
-    );
+    ),);
   }
 }
