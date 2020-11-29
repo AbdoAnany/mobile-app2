@@ -231,7 +231,6 @@ class _PlaceDetailsState extends State<PlaceDetails> {
               child: FlatButton(
                   onPressed: () {
                     setState(() {
-                      print("Gooooooooooo");
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Home()));
                     });
@@ -257,7 +256,6 @@ class _PlaceDetailsState extends State<PlaceDetails> {
               child: FlatButton(
                   onPressed: () {
                     setState(() {
-                      print("back");
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomePages()));
                     });

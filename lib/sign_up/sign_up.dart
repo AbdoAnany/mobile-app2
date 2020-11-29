@@ -61,7 +61,7 @@ Future<List> getData() async {
            child:   Row(
 
              children: [
-             Image(image: AssetImage('assets/icn_company.svg.png'),),
+             Image(image: AssetImage('assets/icn_company.png'),),
              Text(
                "  Set your work location",
                style: TextStyle(fontSize: 20, color: Colors.black54),
